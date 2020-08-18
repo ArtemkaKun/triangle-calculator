@@ -1,8 +1,14 @@
+mod draw_window;
+mod triangle;
+mod point;
 mod tests;
 
 use std::io;
 use float_cmp::ApproxEq;
 use std::str::FromStr;
+
+use crate::point::Point;
+use crate::triangle::Triangle;
 
 fn main() {
     println!("I want to calc your triangle");
@@ -28,7 +34,20 @@ fn main() {
         return
     }
 
-    println!("Congrats! You are a triangle!")
+    println!("Congrats! You are a triangle!");
+
+    let mut triangle = Triangle {
+        a: Point {x: 0.0, y: 0.0},
+        b: Point {x: 0.0, y: 0.0},
+        c: Point {x: triangle_sides[0], y: 0.0},
+        ac_length: triangle_sides[0],
+        ab_length: triangle_sides[1],
+        cb_length: triangle_sides[2],
+    };
+
+    triangle.b = triangle.calc_b_point();
+
+    triangle.draw();
 }
 
 fn handle_side() -> f32 {
