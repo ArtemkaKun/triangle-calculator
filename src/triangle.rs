@@ -22,6 +22,14 @@ impl Triangle {
         }
     }
 
+    pub(crate) fn normalize_triangle(&mut self) {
+        while self.ac_length > 1.0 || self.ab_length > 1.0 || self.cb_length > 1.0 {
+            self.ac_length /= 2.0;
+            self.ab_length /= 2.0;
+            self.cb_length /= 2.0;
+        }
+    }
+
     pub(crate) fn draw(&self) {
         init_vulkan(&self);
     }

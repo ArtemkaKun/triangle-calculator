@@ -57,8 +57,8 @@ pub(crate) fn init_vulkan(triangle: &Triangle) {
 
         let format = caps.supported_formats[0].0;
 
+        // let dimensions: [u32; 2] = surface.window().inner_size().into();
         let dimensions: [u32; 2] = surface.window().inner_size().into();
-
         Swapchain::new(
             device.clone(),
             surface.clone(),
